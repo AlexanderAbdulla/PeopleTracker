@@ -15,7 +15,7 @@
          * @Method({"GET"})
          */
         public function index() {
-            $people= $this->getDoctrine()->getRepository(Person::class)->findAll();
+            $people= $this->getDoctrine()->getRepository(Person::class)->findBy(array(), array('lastContacted' =>'Asc'));
             return $this->render('people/index.html.twig', array('people' => $people));
         }
 
