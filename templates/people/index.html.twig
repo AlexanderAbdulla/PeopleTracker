@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Your People{% endblock %}
+
+{% block body %}
+  {% if people %}
+    <table id="people" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Relationship</th>
+          <th>Contacted</th>
+          <th>CONTACT</th>
+          <th>More</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for person in people %}
+          <tr>
+            <td>{{ person.name }}</td>
+            <td> {{ person.relationship }} </td>
+            <td> {{ person.lastContacted }}
+            <td><a href="/people/updateContacted/{{person.id}}" class="btn btn-danger delete-article">CONTACT</a></td>
+            <td>
+              <a href="/people/{{ person.id }}" class="btn btn-dark">More</a>
+              <!--<a href="/article/edit/{{ person.id }}" class="btn btn-light">Edit</a>
+              <a href="#" class="btn btn-danger delete-article" data-id="{{ person.id }}">Delete</a>
+              -->
+            </td>
+            
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No articles to display</p>
+  {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+  <script src="/js/main.js"></script>
+{% endblock %}
