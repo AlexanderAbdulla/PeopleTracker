@@ -28,6 +28,19 @@ class UserFixture extends Fixture
                      'b'
                  ));
         $manager->persist($user);                 
+        
+        $user2 = new User();
+        $user2->setEmail('c@c.com');
+        $roles = array("ROLE_USER");
+        $user2->setRoles($roles);
+       
+        $user2->setPassword($this->passwordEncoder->encodePassword(
+                     $user2,
+                     'c'
+                 ));
+        $manager->persist($user2);                 
+        
+        
         $manager->flush();
     }
 }

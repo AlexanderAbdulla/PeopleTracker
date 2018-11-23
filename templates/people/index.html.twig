@@ -7,15 +7,7 @@
   {% if is_granted('ROLE_USER') %}
      <h2>Welcome User: {{ user.email }}</h2>
      <a href="/logout" class="btn btn-danger delete-article">Logout</a>
-  
-  {% else %}
-
-      <a href="/login">PLEASE LOG IN TO VIEW THIS CONTENT</a>
-
-  {% endif %}
-
-
-  {% if people %}
+      {% if people %}
     <table id="people" class="table table-striped">
       <thead>
         <tr>
@@ -28,6 +20,7 @@
       </thead>
       <tbody>
         {% for person in people %}
+          {% if person.email is same as(user.email) %}
           <tr>
             <td>{{ person.name }}</td>
             <td> {{ person.relationship }} </td>
@@ -40,14 +33,23 @@
             </td>
             
           </tr>
+          {% endif %}
         {% endfor %}
       </tbody>
     </table>
   {% else %}
     <p>No articles to display</p>
   {% endif %}
+  {% else %}
+
+      <a href="/login">PLEASE LOG IN TO VIEW THIS CONTENT</a>
+
+  {% endif %}
+
+
+  
 {% endblock %}
 
 {% block javascripts %}
   <script src="/js/main.js"></script>
-{% endblock %}
+{% endblock %}    

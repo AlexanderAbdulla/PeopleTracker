@@ -71,7 +71,7 @@ class Person
     }
 
     public function setDetails($details){
-        $this->name = $details;
+        $this->details = $details;
     }
 
     public function getRelationship(){
@@ -80,6 +80,14 @@ class Person
 
     public function setRelationship($relationship){
         $this->relationship = $relationship;
+    }
+
+    public function getEmail(){
+        return $this->username;
+    }
+
+    public function setUsername($username){
+        $this->username = $username;
     }
     
 }
