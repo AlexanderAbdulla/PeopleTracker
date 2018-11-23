@@ -1,8 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Your People{% endblock %}
+{% block title %} Your People {% endblock %}
 
 {% block body %}
+
+  {% if is_granted('ROLE_USER') %}
+     <h2>Welcome User: {{ user.email }}</h2>
+     <a href="/logout" class="btn btn-danger delete-article">Logout</a>
+  
+  {% else %}
+
+      <a href="/login">PLEASE LOG IN TO VIEW THIS CONTENT</a>
+
+  {% endif %}
+
+
   {% if people %}
     <table id="people" class="table table-striped">
       <thead>
@@ -23,9 +35,8 @@
             <td><a href="/people/updateContacted/{{person.id}}" class="btn btn-danger delete-article">CONTACT</a></td>
             <td>
               <a href="/people/{{ person.id }}" class="btn btn-dark">More</a>
-              <!--<a href="/article/edit/{{ person.id }}" class="btn btn-light">Edit</a>
-              <a href="#" class="btn btn-danger delete-article" data-id="{{ person.id }}">Delete</a>
-              -->
+              <!--<a href="/article/edit/{{ person.id }}" class="btn btn-light">Edit</a>-->
+              
             </td>
             
           </tr>

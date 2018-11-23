@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #   controller: App\Controller\PeopleController::index
+
+#config/routes.yaml
+app_logout:
+    path: /logout

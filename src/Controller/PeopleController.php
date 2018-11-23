@@ -15,8 +15,10 @@
          * @Method({"GET"})
          */
         public function index() {
+            $user = $this->getUser();
             $people= $this->getDoctrine()->getRepository(Person::class)->findBy(array(), array('lastContacted' =>'Asc'));
-            return $this->render('people/index.html.twig', array('people' => $people));
+            
+            return $this->render('people/index.html.twig', array('people' => $people, 'user' => $user));
         }
 
         /**
